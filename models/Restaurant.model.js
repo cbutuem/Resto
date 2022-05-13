@@ -14,11 +14,12 @@ const restaurantSchema = new Schema({
     },
     passwordHash: { type: String, required: true },
     foodCategory: [{ type: String, required: true }],
+    reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
     imgUser: { type: String },
     isActive: { type: Boolean, default: true },
     disabled: { type: Date },
 });
 
-const RestaurantModel = model("User", restaurantSchema);
+const RestaurantModel = model("Restaurant", restaurantSchema);
 
 module.exports = RestaurantModel;

@@ -12,7 +12,7 @@ router.post("/signup", async (req,res) =>{
 
         if(!password || !password.match(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/)){
             return res.status(400).json({
-                msg:"Password required and must have an upper case, an lower case, a number anda a special character."
+                msg:"Password required and must have an upper case, an lower case, a number and a special character."
             })
         }
 

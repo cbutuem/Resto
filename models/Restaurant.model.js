@@ -17,7 +17,7 @@ const restaurantSchema = new Schema({
     reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
     imgUser: { type: String },
     isActive: { type: Boolean, default: true },
-    disabled: { type: Date },
+    disabledOn: { type: Date },
 });
 
 const RestaurantModel = model("Restaurant", restaurantSchema);

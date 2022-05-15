@@ -16,7 +16,7 @@ const userSchema = new Schema({
     restaurants: [{ type: mongoose.Types.ObjectId, ref: "Restaurant" }],
     imgUser: { type: String },
     isActive: { type: Boolean, default: true },
-    disabled: { type: Date },
+    disabledOn: { type: Date },
 });
 
 const UserModel = model("User", userSchema);

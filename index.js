@@ -15,6 +15,9 @@ app.use("/user", userRouter);
 const restaurantRouter = require("./routes/restaurant.routes")
 app.use("/restaurant", restaurantRouter);
 
+const reviewRouter = require("./routes/review.routes")
+app.use("/review", reviewRouter);
+
 app.listen(Number(process.env.PORT), ()=>{
     console.log("Server up! PORT:", process.env.PORT);
 });

@@ -70,10 +70,37 @@ router.post("/login", async (req, res) => {
     }
 
 });
-
-    router.get("user-profile", isAuth, attachCurrentRestaurant, (req, res) => {
+//  PRÓPRIO RESTAURANTE ACESSA O PERFIL
+    router.get("/user-profile", isAuth, attachCurrentRestaurant, (req, res) => {
         return res.status(200).json(req.currentUser);
     })
+
+//USUÁRIOS ACESSAM O PERFIL DO RESTAURANTE
+    router.get("/profile/:restaurantId", async (req, res) => {
+        try{
+            const foundRestaurant = await RestaurantModel.findOne({_id: req.params.restaurantId});
+            delete foundRestaurant._doc.passwordHash;
+            return res.status(200).json(foundRestaurant)
+
+        } catch (error) {
+        console.log(error);
+        return res.status(500).json(error);
+        }
+    
+})
+
+//VER TODOS OS RESTAURANTES
+router.get("/all-restaurants", async (req, res) => {
+    try{
+        const restaurants = await RestaurantModel.find().select("-passwordHash") 
+        return res.status(200).json(restaurants)
+
+    } catch (error) {
+    console.log(error);
+    return res.status(500).json(error);
+    }
+
+})
 
     router.patch("/update-profile", isAuth, attachCurrentRestaurant, async (req, res) => {
         try {

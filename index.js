@@ -18,6 +18,9 @@ app.use("/restaurant", restaurantRouter);
 const reviewRouter = require("./routes/review.routes")
 app.use("/review", reviewRouter);
 
+const uploadImgRouter = require("./routes/uploadimg.routes");
+app.use("/", uploadImgRouter);
+
 app.listen(Number(process.env.PORT), ()=>{
     console.log("Server up! PORT:", process.env.PORT);
 });

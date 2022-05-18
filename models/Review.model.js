@@ -5,8 +5,8 @@ const reviewSchema = new Schema({
     restaurant: { type: mongoose.Types.ObjectId, ref: "Restaurant" },
     comment: {type: String, minlength:1,},
     rate: {type: Number, min:1 , max:5},
-    date: { type: Date }
-
+    date: { type: Date },
+    answers: [{type: String}]
 })
 
 const ReviewModel = model("Review", reviewSchema);

@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 const uploadImg = require("../config/cloudinary.config");
 
+
 router.post("/upload-image", uploadImg.single("picture"), (req, res) => {
   if (!req.file) {
     return res.status(500).json({ msg: "Upload fail." });

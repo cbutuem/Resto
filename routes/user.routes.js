@@ -108,5 +108,20 @@ router.post("/login", async (req, res) => {
     };
 });
 
+router.patch("/addfav/:restaurantId", isAuth, attachCurrentUser, async (req,res) => {
+    try{
+
+        const addedfav = await UserModel.findOneAndUpdate(
+            { _id: req.currentUser._id },
+            { $push: { restaurants: req.params.restaurantId }},
+            {new:true})
+
+            return res.status(200).json(addedfav)
+    } catch(error) {
+        console.log(error);
+        return res.status(500).json(error);
+    }
+})
+
 
 module.exports = router

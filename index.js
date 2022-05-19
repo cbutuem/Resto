@@ -21,6 +21,9 @@ app.use("/review", reviewRouter);
 const uploadImgRouter = require("./routes/uploadimg.routes");
 app.use("/image", uploadImgRouter);
 
+const sendMail = require("./routes/sendMail")
+app.use("/mail", sendMail)
+
 app.listen(Number(process.env.PORT), ()=>{
     console.log("Server up! PORT:", process.env.PORT);
 });

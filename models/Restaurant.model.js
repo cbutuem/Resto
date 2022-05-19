@@ -2,7 +2,7 @@ const { Schema, model, default: mongoose } = require("mongoose");
 
 const restaurantSchema = new Schema({
     name: { type: String, required: true, trim: true },
-    birth: { type: Date, required: true },
+    birth: { type: String, required: true },
     address: { type: String, required: true },
     city: { type: String, required: true }, 
     email: {
@@ -13,6 +13,7 @@ const restaurantSchema = new Schema({
         match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
     },
     passwordHash: { type: String, required: true },
+    contact: {type: String, required: true},
     foodCategory: [{ type: String, required: true }],
     reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
     imgUser: { type: String },

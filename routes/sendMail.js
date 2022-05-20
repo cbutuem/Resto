@@ -23,18 +23,18 @@ const transporter = nodemailer.createTransport({
         from: 'restoapp71@gmail.com',
         to: `${req.body.usermail}`,
         subject: `Reserva no Restô feita!`,
-        html: ` <p>Sua reserva para ${req.body.pessoas} pessoas no restaurante no dia ${req.body.data} às ${req.body.horario} está feita!</p>`
+        html: ` <p>Sua reserva para ${req.body.pessoas} pessoas no ${restaurant.name} no dia ${req.body.data} às ${req.body.horario} está feita!</p>`
       }
     )
 
-    /*transporter.sendMail(
+    transporter.sendMail(
         {
         from: 'restoapp71@gmail.com',
         to: `${restaurant.email}`,
         subject: `Reserva recebida pelo Restô!`,
         html: ` <p>${req.body.user} fez uma reserva para ${req.body.pessoas} pessoas no dia ${req.body.data} às ${req.body.horario}!</p>`
       }
-    )*/
+    )
       }catch(error){console.log(error)}
 }) 
 

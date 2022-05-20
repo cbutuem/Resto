@@ -2,7 +2,7 @@ const { Schema, model, default: mongoose } = require("mongoose");
 
 const restaurantSchema = new Schema({
     name: { type: String, required: true, trim: true },
-    birth: { type: Date, required: true },
+    birth: { type: String},
     address: { type: String, required: true },
     city: { type: String, required: true }, 
     email: {

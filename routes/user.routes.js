@@ -70,7 +70,7 @@ router.post("/login", async (req, res) => {
 
 });
 
-    router.get("user-profile", isAuth, attachCurrentUser, (req, res) => {
+    router.get("/user-profile", isAuth, attachCurrentUser, (req, res) => {
         return res.status(200).json(req.currentUser);
     })
 

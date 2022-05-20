@@ -72,8 +72,20 @@ router.post("/login", async (req, res) => {
 
 });
 //  PRÓPRIO RESTAURANTE ACESSA O PERFIL
-    router.get("/user-profile", isAuth, attachCurrentRestaurant, (req, res) => {
-        return res.status(200).json(req.currentUser);
+    router.get("/user-profile", async (req, res) => {
+        // return res.status(200).json(req.currentUser);
+
+        try {
+            const foundedUser = await UserModel.findOne(
+                { _id: req.body._id },
+            );
+            return res.status(200).json(foundedUser);
+            
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json(error);
+        }
+
     })
 
 //USUÁRIOS ACESSAM O PERFIL DO RESTAURANTE

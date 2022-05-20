@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const RestaurantModel = require("../models/Restaurant.model");
+const UserModel = require("../models/User.model");
 const router = require("express").Router();
 
 const transporter = nodemailer.createTransport({ 
@@ -10,12 +11,7 @@ const transporter = nodemailer.createTransport({
      } 
     })
 
-const mailOptions = {
-    from: 'restoapp71@gmail.com',
-    to: 'hudson_arpini@hotmail.com',
-    subject: 'Reserva no Restô',
-    html: '<p>Sua reserva foi feita com sucesso!</p>'
-  }
+
 
   router.post("/sendmail/:restaurantId", async (req, res) => {
       try{
@@ -25,20 +21,20 @@ const mailOptions = {
     transporter.sendMail(
         {
         from: 'restoapp71@gmail.com',
-        to: 'hudson_arpini@hotmail.com',
-        subject: "Reserva no Restô feita!",
-        text: `Tantas pessoas :${req.body.pessoas}`
+        to: `${req.body.usermail}`,
+        subject: `Reserva no Restô feita!`,
+        html: ` <p>Sua reserva para ${req.body.pessoas} pessoas no restaurante no dia ${req.body.data} às ${req.body.horario} está feita!</p>`
       }
     )
 
-    transporter.sendMail(
+    /*transporter.sendMail(
         {
         from: 'restoapp71@gmail.com',
         to: `${restaurant.email}`,
-        subject: `${restaurant.name}`,
-        text: `Tantas pessoas :${req.body.pessoas}`
+        subject: `Reserva recebida pelo Restô!`,
+        html: ` <p>${req.body.user} fez uma reserva para ${req.body.pessoas} pessoas no dia ${req.body.data} às ${req.body.horario}!</p>`
       }
-    )
+    )*/
       }catch(error){console.log(error)}
 }) 
 

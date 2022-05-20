@@ -70,9 +70,21 @@ router.post("/login", async (req, res) => {
 
 });
 
-    router.get("/user-profile", isAuth, attachCurrentUser, (req, res) => {
-        return res.status(200).json(req.currentUser);
+    router.get("/user-profile", async (req, res) => {
+        
+        try {
+            const foundedUser = await UserModel.findOne(
+                { _id: req.body._id },
+            );
+            return res.status(200).json(foundedUser);
+            
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json(error);
+        }
     })
+        
+        
 
     router.patch("/update-profile", isAuth, attachCurrentUser, async (req, res) => {
         try {

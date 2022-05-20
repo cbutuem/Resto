@@ -9,13 +9,13 @@ app.use(express.json());
 app.use(cors({origin: process.env.REACT_APP_URL}));
 
 
-const userRouter = require("./routes/user.routes")
+const userRouter = require("./routes/user.routes");
 app.use("/user", userRouter);
 
-const restaurantRouter = require("./routes/restaurant.routes")
+const restaurantRouter = require("./routes/restaurant.routes");
 app.use("/restaurant", restaurantRouter);
 
-const reviewRouter = require("./routes/review.routes")
+const reviewRouter = require("./routes/review.routes");
 app.use("/review", reviewRouter);
 
 const uploadImgRouter = require("./routes/uploadimg.routes");

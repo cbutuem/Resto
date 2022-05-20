@@ -13,6 +13,7 @@ const restaurantSchema = new Schema({
         match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
     },
     passwordHash: { type: String, required: true },
+    contact: {type: String, required: true},
     foodCategory: [{ type: String, required: true }],
     reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
     imgUser: { type: String },
